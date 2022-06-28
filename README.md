@@ -1,2 +1,4 @@
-# telegram-bot
-Practice APIs.
+# Telegram bot
+Practice
+- using APIs
+- deploying an app
