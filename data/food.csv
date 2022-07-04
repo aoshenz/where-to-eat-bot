@@ -1,16 +1,16 @@
-restaurant,location,is_good_for_cold_day,is_for_desert,is_for_breakfast,is_for_lunch,is_for_dinner
-Lab Kitchen,Wentworth Point,,1,0,0,0
-Lab Bakery,Rhodes,,1,0,0,0
-CokCo Chicken,Wentworth Point,,0,0,1,1
-Bare Witness,Rhodes,,0,1,1,0
-Left of Field,Rhodes,,0,1,1,0
-Lilong by Taste of Shanghai,Rhodes,,0,0,1,1
-McDonald's,Rhodes,,1,0,1,1
-machi machi,Rhodes,,1,0,0,0
-Leaf Cafe & Co,Rhodes,,0,1,1,0
-Two Peck Crispy Chicken,Rhodes,,0,0,1,1
-Tasty Towns Gelato,Rhodes,,1,0,0,0
-Cho Express,Rhodes,,0,0,1,1
-Auvers Cafe,Rhodes,,0,1,1,0
-Italian Street Kitchen,Meadowbank,,0,0,1,1
-Chicken Story,Meadowbank,,0,0,1,1
+restaurant,location,ideal_weather,price_range,is_for_dessert,is_for_breakfast,is_for_lunch,is_for_dinner
+Lab Kitchen,Wentworth Point,hot,1,1,0,0,0
+Lab Bakery,Rhodes,hot,1,1,0,0,0
+CokCo Chicken,Wentworth Point,both,1,0,0,1,1
+Bare Witness,Rhodes,both,2,0,1,1,0
+Left of Field,Rhodes,both,2,0,1,1,0
+Lilong by Taste of Shanghai,Rhodes,both,2,0,0,1,1
+McDonald's,Rhodes,both,1,1,0,1,1
+machi machi,Rhodes,hot,1,1,0,0,0
+Leaf Cafe & Co,Rhodes,both,2,0,1,1,0
+Two Peck Crispy Chicken,Rhodes,both,1,0,0,1,1
+Tasty Towns Gelato,Rhodes,hot,1,1,0,0,0
+Cho Express,Rhodes,both,1,0,0,1,1
+Auvers Cafe,Rhodes,both,2,0,1,1,0
+Italian Street Kitchen,Meadowbank,both,3,0,0,1,1
+Chicken Story,Meadowbank,both,2,0,0,1,1

@@ -1,4 +1,10 @@
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackQueryHandler
+from telegram.ext import (
+    Updater,
+    CommandHandler,
+    MessageHandler,
+    Filters,
+    CallbackQueryHandler,
+)
 import telegram
 import pandas as pd
 import logging
@@ -18,6 +24,7 @@ print(food)
 updater = Updater(TOKEN)
 disp = updater.dispatcher
 
+
 def start(update, context):
     # update.message.reply_text("Hello. 👋")
     """Sends a message with three inline buttons attached."""
@@ -33,6 +40,7 @@ def start(update, context):
 
     update.message.reply_text("Please choose:", reply_markup=reply_markup)
 
+
 def button(update, context):
     """Parses the CallbackQuery and updates the message text."""
     query = update.callback_query
@@ -41,8 +49,11 @@ def button(update, context):
 
     query.edit_message_text(text=f"Selected option: {query.data}")
 
+
 def help(update, context):
-    update.message.reply_text(dedent("""\
+    update.message.reply_text(
+        dedent(
+            """\
     I can help you decide where you should eat.
 
     You can control me by sending these commands:
@@ -53,30 +64,31 @@ def help(update, context):
 
     <b>Let's eat</b>
     /eat - helps you decide where to eat
-    """),
+    """
+        ),
         parse_mode=telegram.ParseMode.HTML,
     )
 
-class Food:
 
+class Food:
     def __init__(self, data=pd.read_csv("./data/food.csv")):
         self.data = data
-    
+
     def filter_food(self, option):
-        
+
         data = self.data.copy()
 
         col = q1_dict[option]
 
-        data = data[data[col]==1]
-        
+        data = data[data[col] == 1]
+
         self.data = data
 
         print(self.data)
 
     def choose_food(self):
-        self.chosen_restaurant = self.data['restaurant'].iloc[0]
-        self.chosen_location = self.data['location'].iloc[0]
+        self.chosen_restaurant = self.data["restaurant"].iloc[0]
+        self.chosen_location = self.data["location"].iloc[0]
 
 
 q1_meal = "What meal is this for?"
@@ -85,18 +97,19 @@ q1_dict = {
     "Breakfast 🥐": "is_for_breakfast",
     "Lunch 🍗": "is_for_lunch",
     "Dinner 🍱": "is_for_dinner",
-    "Dessert 🍨": "is_for_desert"
+    "Dessert 🍨": "is_for_desert",
 }
 
 # Instantiate class
 getFood = Food()
 
+
 def eat(update, context):
-    
+
     # Question 1
     reply_markup = telegram.ReplyKeyboardMarkup(q1_options, one_time_keyboard=True)
     update.message.reply_text(text=q1_meal, reply_markup=reply_markup)
-    
+
 
 def msg_handler(update, context):
     update.message.reply_text(f"You chose {update.message.text}")
@@ -104,7 +117,9 @@ def msg_handler(update, context):
     getFood.filter_food(update.message.text)
     getFood.choose_food()
 
-    update.message.reply_text(f"You should go to {getFood.chosen_restaurant} at {getFood.chosen_location}")
+    update.message.reply_text(
+        f"You should go to {getFood.chosen_restaurant} at {getFood.chosen_location}"
+    )
 
 
 def main():
@@ -118,7 +133,6 @@ def main():
 
     updater.start_polling()
     updater.idle()
-
 
 
 if __name__ == "__main__":
