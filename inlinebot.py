@@ -54,7 +54,7 @@ async def eat(update, context):
 
     keyboard = [
         [
-            InlineKeyboardButton(food.q1_options[0], callback_data=str(ONE)),
+            InlineKeyboardButton(food.q1_options[0], callback_data="0. lol"),
             InlineKeyboardButton(food.q1_options[1], callback_data=str(ONE)),
         ],
         [
@@ -64,15 +64,16 @@ async def eat(update, context):
     ]
 
     reply_markup = InlineKeyboardMarkup(keyboard)
-    await update.message.reply_text(food.q1, reply_markup=reply_markup)
 
+    await update.message.reply_text(food.q1, reply_markup=reply_markup)
     return START_ROUTES
 
 
 async def meal_type(update, context):
     query = update.callback_query
+
     await query.answer()
-    print(query.message['reply_markup'])
+    logger.info(query.data)
 
     keyboard = [
         [
@@ -123,7 +124,7 @@ def main():
         entry_points=[CommandHandler("eat", eat)],
         states={
             START_ROUTES: [
-                CallbackQueryHandler(meal_type, pattern="^" + str(ONE) + "$"),
+                CallbackQueryHandler(meal_type, pattern="^" + str(ONE)),
                 CallbackQueryHandler(cost, pattern="^" + str(TWO) + "$"),
             ],
             END_ROUTES: [CallbackQueryHandler(end, pattern="^" + str(ONE) + "$")],
