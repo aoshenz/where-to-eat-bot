@@ -26,6 +26,7 @@ ONE, TWO, THREE = range(3)
 
 # Instantiate class
 ChosenFood = food.Food()
+choices = []
 
 
 async def help(update, context):
@@ -54,12 +55,20 @@ async def eat(update, context):
 
     keyboard = [
         [
-            InlineKeyboardButton(food.q1_options[0], callback_data="0. lol"),
-            InlineKeyboardButton(food.q1_options[1], callback_data=str(ONE)),
+            InlineKeyboardButton(
+                food.q1_options[0], callback_data="0. " + food.q1_options[0]
+            ),
+            InlineKeyboardButton(
+                food.q1_options[1], callback_data="0. " + food.q1_options[1]
+            ),
         ],
         [
-            InlineKeyboardButton(food.q1_options[2], callback_data=str(ONE)),
-            InlineKeyboardButton(food.q1_options[3], callback_data=str(ONE)),
+            InlineKeyboardButton(
+                food.q1_options[2], callback_data="0. " + food.q1_options[2]
+            ),
+            InlineKeyboardButton(
+                food.q1_options[3], callback_data="0. " + food.q1_options[3]
+            ),
         ],
     ]
 
@@ -69,17 +78,34 @@ async def eat(update, context):
     return START_ROUTES
 
 
-async def meal_type(update, context):
+async def question_2(update, context):
     query = update.callback_query
 
     await query.answer()
-    logger.info(query.data)
+
+    # print ans
+    chosen_selection = query.data
+    chosen_selection_without_q = chosen_selection[3:]
+
+    choices.append(query.data)
+    logger.info(chosen_selection_without_q)
+
+    # filter data
+    ChosenFood.filter(
+        food.q1_dict, option=chosen_selection_without_q, column=None, single_col=False
+    )
 
     keyboard = [
         [
-            InlineKeyboardButton(food.q2_options[0], callback_data=str(TWO)),
-            InlineKeyboardButton(food.q2_options[1], callback_data=str(TWO)),
-            InlineKeyboardButton(food.q2_options[2], callback_data=str(TWO)),
+            InlineKeyboardButton(
+                food.q2_options[0], callback_data="1. " + food.q2_options[0]
+            ),
+            InlineKeyboardButton(
+                food.q2_options[1], callback_data="1. " + food.q2_options[1]
+            ),
+            InlineKeyboardButton(
+                food.q2_options[2], callback_data="1. " + food.q2_options[2]
+            ),
         ]
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
@@ -88,18 +114,40 @@ async def meal_type(update, context):
     return START_ROUTES
 
 
-async def cost(update, context):
+async def question_3(update, context):
     query = update.callback_query
     await query.answer()
 
+    # print ans
+    chosen_selection = query.data
+    chosen_selection_without_q = chosen_selection[3:]
+
+    choices.append(query.data)
+    logger.info(chosen_selection_without_q)
+
+    # filter data
+    ChosenFood.filter(
+        food.q2_dict,
+        option=chosen_selection_without_q,
+        column=food.q2_col,
+        single_col=True,
+    )
+
     keyboard = [
         [
-            InlineKeyboardButton("Yes", callback_data=str(ONE)),
-            InlineKeyboardButton("No", callback_data=str(ONE)),
+            InlineKeyboardButton(
+                food.q3_options[0], callback_data="0. " + food.q3_options[0]
+            ),
+            InlineKeyboardButton(
+                food.q3_options[1], callback_data="0. " + food.q3_options[1]
+            ),
+            InlineKeyboardButton(
+                food.q3_options[2], callback_data="0. " + food.q3_options[2]
+            ),
         ]
     ]
     reply_markup = InlineKeyboardMarkup(keyboard)
-    await query.edit_message_text(text="Last question:", reply_markup=reply_markup)
+    await query.edit_message_text(text=food.q3, reply_markup=reply_markup)
 
     return END_ROUTES
 
@@ -112,7 +160,28 @@ async def end(update, context):
 
     query = update.callback_query
     await query.answer()
-    await query.edit_message_text(text="You should eat: ")
+
+    # print ans
+    chosen_selection = query.data
+    chosen_selection_without_q = chosen_selection[3:]
+
+    choices.append(query.data)
+    logger.info(chosen_selection_without_q)
+
+    # filter data
+    ChosenFood.filter(
+        food.q3_dict,
+        option=chosen_selection_without_q,
+        column=food.q3_col,
+        single_col=True,
+    )
+
+    # selected food
+    ChosenFood.choose_food()
+
+    text = f"You chose {choices[0]}, {choices[1]} and {choices[2]}. You should eat at {ChosenFood.chosen_restaurant}, {ChosenFood.chosen_location}."
+
+    await query.edit_message_text(text=text)
     return ConversationHandler.END
 
 
@@ -124,10 +193,10 @@ def main():
         entry_points=[CommandHandler("eat", eat)],
         states={
             START_ROUTES: [
-                CallbackQueryHandler(meal_type, pattern="^" + str(ONE)),
-                CallbackQueryHandler(cost, pattern="^" + str(TWO) + "$"),
+                CallbackQueryHandler(question_2, pattern="^" + str(ONE)),
+                CallbackQueryHandler(question_3, pattern="^" + str(TWO)),
             ],
-            END_ROUTES: [CallbackQueryHandler(end, pattern="^" + str(ONE) + "$")],
+            END_ROUTES: [CallbackQueryHandler(end, pattern="^" + str(ONE))],
         },
         fallbacks=[CommandHandler("start", start)],
     )
