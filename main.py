@@ -33,10 +33,6 @@ START_ROUTES, END_ROUTES = range(2)
 # Callback data
 ONE, TWO, THREE = range(3)
 
-# Instantiate class
-ChosenFood = food.Food()
-choices = []
-
 
 async def help(update, context):
     await update.message.reply_html(
@@ -65,6 +61,10 @@ async def eat(update, context):
 
     user = update.message.from_user
     logger.info("User %s started the conversation.", user.first_name)
+
+    # Instantiate class
+    ChosenFood = food.Food()
+    choices = []
 
     keyboard = [
         [
