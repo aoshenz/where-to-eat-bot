@@ -68,6 +68,7 @@ class Food:
         self.chosen_restaurant = self.data["restaurant"].iloc[random_row]
         self.chosen_location = self.data["location"].iloc[random_row]
 
+
 def save_answer(list, answer):
 
     chosen_selection_without_q = answer[3:]

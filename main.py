@@ -15,16 +15,17 @@ from textwrap import dedent
 import food as food
 import os
 from dotenv import load_dotenv
+
 load_dotenv()
 
-TOKEN = os.getenv('TOKEN')
+TOKEN = os.getenv("TOKEN")
 
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
 )
 logger = logging.getLogger(__name__)
 
-PORT = int(os.environ.get('PORT', 5000))
+PORT = int(os.environ.get("PORT", 5000))
 
 # Stages
 START_ROUTES, END_ROUTES = range(2)
@@ -199,8 +200,12 @@ def main():
     application.add_handler(CommandHandler("help", help))
 
     # application.run_polling()
-    application.run_webhook(listen="0.0.0.0", port=PORT, url_path=TOKEN)
-    application.bot.setWebhook('https://aoshen-telegram-bot.herokuapp.com/' + TOKEN)
+    application.run_webhook(
+        listen="0.0.0.0",
+        port=PORT,
+        url_path=TOKEN,
+        webhook_url="https://aoshen-telegram-bot.herokuapp.com/" + TOKEN,
+    )
 
 
 if __name__ == "__main__":
