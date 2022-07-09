@@ -14,6 +14,10 @@ import logging
 from textwrap import dedent
 import food as food
 import os
+from dotenv import load_dotenv
+load_dotenv()
+
+TOKEN = os.getenv('TOKEN')
 
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
@@ -21,9 +25,6 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 PORT = int(os.environ.get('PORT', 5000))
-
-with open("secret/keys.txt", "r") as f:
-    TOKEN = f.read()
 
 # Stages
 START_ROUTES, END_ROUTES = range(2)
