@@ -42,7 +42,7 @@ async def help(update, context):
     await update.message.reply_html(
         dedent(
             """\
-        I can help you decide where you should eat.
+        I can help you decide where to eat in Sydney based on a couple of questions and a predefined list of restaurants.
 
         You can control me by sending these commands:
 
