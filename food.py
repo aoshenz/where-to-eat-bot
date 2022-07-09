@@ -45,6 +45,8 @@ class Food:
         self.data = data
         self.choices = []
 
+        logger.info("Reimporting data.")
+
     def filter(self, dict, option, column=None, single_col=True):
 
         data = self.data.copy()
