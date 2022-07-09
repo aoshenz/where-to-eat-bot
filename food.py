@@ -56,8 +56,6 @@ class Food:
             data = data[data[col] == 1]
             self.data = data
 
-        print(self.data)
-
     def choose_food(self):
 
         remaining_rows = len(self.data)

@@ -199,7 +199,7 @@ def main():
     application.add_handler(CommandHandler("start", start))
     application.add_handler(CommandHandler("help", help))
 
-    # application.run_polling()
+    # use application.run_polling() instead of run_webhook() to test locally
     application.run_webhook(
         listen="0.0.0.0",
         port=PORT,
