@@ -1,6 +1,10 @@
 # Telegram bot
 test
 
+<div align="center">
+<img src="images/all_time_activity.png" alt="drawing" width="800"/>
+</div>
+
 
 Practice
 - using APIs
