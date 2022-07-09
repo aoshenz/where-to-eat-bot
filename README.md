@@ -2,7 +2,7 @@
 ## where_2_eat
 This bot helps you decide where to eat based on a couple of questions and a predefined list of restaurants. This bot won't be useful to most people as the underlying data is quite localised but the code is here for others to copy.
 
-The where_2_eat bot is available here: [t.me/where_2_eat_bot](t.me/where_2_eat_bot). Here's an example of the simple functionality.
+The where_2_eat bot is available here: [t.me/where_2_eat_bot](https://t.me/where_2_eat_bot). Here's an example of the simple functionality.
 
 <div align="center">
 <img src="images/demo.gif" alt="demo" width="500"/>
