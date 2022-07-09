@@ -35,7 +35,6 @@ ONE, TWO, THREE = range(3)
 
 # Instantiate class
 ChosenFood = food.Food()
-choices = []
 
 async def help(update, context):
     await update.message.reply_html(
@@ -64,6 +63,8 @@ async def eat(update, context):
 
     user = update.message.from_user
     logger.info("User %s started the conversation.", user.first_name)
+
+    ChosenFood.reset_data()
 
     keyboard = [
         [
@@ -95,7 +96,7 @@ async def question_2(update, context):
 
     await query.answer()
 
-    chosen_selection_without_q = food.save_answer(choices, query.data)
+    chosen_selection_without_q = ChosenFood.save_answer(query.data)
 
     # filter data
     ChosenFood.filter(
@@ -125,7 +126,7 @@ async def question_3(update, context):
     query = update.callback_query
     await query.answer()
 
-    chosen_selection_without_q = food.save_answer(choices, query.data)
+    chosen_selection_without_q = ChosenFood.save_answer(query.data)
 
     # filter data
     ChosenFood.filter(
@@ -159,7 +160,7 @@ async def end(update, context):
     query = update.callback_query
     await query.answer()
 
-    chosen_selection_without_q = food.save_answer(choices, query.data)
+    chosen_selection_without_q = ChosenFood.save_answer(query.data)
 
     # filter data
     ChosenFood.filter(
@@ -173,10 +174,11 @@ async def end(update, context):
     ChosenFood.choose_food()
 
     text = dedent(f"""
-        You chose {choices[0]}, {choices[1]} and {choices[2]}. 
+        You chose {ChosenFood.choices[0]}, {ChosenFood.choices[1]} and {ChosenFood.choices[2]}. 
         
         You should eat at {ChosenFood.chosen_restaurant}, {ChosenFood.chosen_location}.
     """)
+
 
     await query.edit_message_text(text=text)
     return ConversationHandler.END

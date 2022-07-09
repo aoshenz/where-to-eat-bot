@@ -39,6 +39,11 @@ q3_dict = {
 class Food:
     def __init__(self, data=pd.read_csv("./data/food.csv")):
         self.data = data
+        self.choices = []
+
+    def reset_data(self, data=pd.read_csv("./data/food.csv")):
+        self.data = data
+        self.choices = []
 
     def filter(self, dict, option, column=None, single_col=True):
 
@@ -71,13 +76,11 @@ class Food:
             self.chosen_restaurant = "No restaurants with your choices"
             self.chosen_location = "please try again"
 
+    def save_answer(self, answer):
 
+        chosen_selection_without_q = answer[3:]
 
-def save_answer(list, answer):
+        logger.info(chosen_selection_without_q)
+        self.choices.append(chosen_selection_without_q)
 
-    chosen_selection_without_q = answer[3:]
-
-    logger.info(chosen_selection_without_q)
-    list.append(chosen_selection_without_q)
-
-    return chosen_selection_without_q
+        return chosen_selection_without_q
