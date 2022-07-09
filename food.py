@@ -70,7 +70,7 @@ class Food:
         else:
 
             self.chosen_restaurant = "No restaurants with your choices"
-            self.chosen_location = "try again"
+            self.chosen_location = "please try again"
 
 
 
