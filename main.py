@@ -1,3 +1,7 @@
+"""
+Telegram Bot to suggest a restaurant based on some questions and a predefined list.
+"""
+
 from telegram.ext import (
     ApplicationBuilder,
     CommandHandler,
@@ -9,11 +13,14 @@ from telegram import InlineKeyboardButton, InlineKeyboardMarkup
 import logging
 from textwrap import dedent
 import food as food
+import os
 
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
 )
 logger = logging.getLogger(__name__)
+
+PORT = int(os.environ.get('PORT', 5000))
 
 with open("secret/keys.txt", "r") as f:
     TOKEN = f.read()
@@ -46,6 +53,10 @@ async def help(update, context):
         """
         )
     )
+
+
+async def start(update, context):
+    await update.message.reply_html("Hello.")
 
 
 async def eat(update, context):
@@ -83,12 +94,7 @@ async def question_2(update, context):
 
     await query.answer()
 
-    # print ans
-    chosen_selection = query.data
-    chosen_selection_without_q = chosen_selection[3:]
-
-    choices.append(query.data)
-    logger.info(chosen_selection_without_q)
+    chosen_selection_without_q = food.save_answer(choices, query.data)
 
     # filter data
     ChosenFood.filter(
@@ -118,12 +124,7 @@ async def question_3(update, context):
     query = update.callback_query
     await query.answer()
 
-    # print ans
-    chosen_selection = query.data
-    chosen_selection_without_q = chosen_selection[3:]
-
-    choices.append(query.data)
-    logger.info(chosen_selection_without_q)
+    chosen_selection_without_q = food.save_answer(choices, query.data)
 
     # filter data
     ChosenFood.filter(
@@ -152,21 +153,12 @@ async def question_3(update, context):
     return END_ROUTES
 
 
-def start(update, context):
-    update.message.reply("Hello.")
-
-
 async def end(update, context):
 
     query = update.callback_query
     await query.answer()
 
-    # print ans
-    chosen_selection = query.data
-    chosen_selection_without_q = chosen_selection[3:]
-
-    choices.append(query.data)
-    logger.info(chosen_selection_without_q)
+    chosen_selection_without_q = food.save_answer(choices, query.data)
 
     # filter data
     ChosenFood.filter(
@@ -202,9 +194,12 @@ def main():
     )
 
     application.add_handler(conv_handler)
+    application.add_handler(CommandHandler("start", start))
     application.add_handler(CommandHandler("help", help))
 
-    application.run_polling()
+    # application.run_polling()
+    application.run_webhook(listen="0.0.0.0", port=PORT, url_path=TOKEN)
+    application.bot.setWebhook('https://aoshen-telegram-bot.herokuapp.com/' + TOKEN)
 
 
 if __name__ == "__main__":

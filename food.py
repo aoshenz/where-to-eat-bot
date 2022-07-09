@@ -1,5 +1,11 @@
 import pandas as pd
 import random
+import logging
+
+logging.basicConfig(
+    format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
+)
+logger = logging.getLogger(__name__)
 
 
 q1 = "What meal is this for?"
@@ -53,8 +59,20 @@ class Food:
         print(self.data)
 
     def choose_food(self):
-        random_row = random.randint(0, len(self.data)) - 1
-        print(random_row)
+
+        remaining_rows = len(self.data)
+
+        random_row = random.randint(0, remaining_rows - 1)
+        logger.info("Chose row %s from %s.", random_row + 1, remaining_rows)
 
         self.chosen_restaurant = self.data["restaurant"].iloc[random_row]
         self.chosen_location = self.data["location"].iloc[random_row]
+
+def save_answer(list, answer):
+
+    chosen_selection_without_q = answer[3:]
+
+    logger.info(chosen_selection_without_q)
+    list.append(chosen_selection_without_q)
+
+    return chosen_selection_without_q
