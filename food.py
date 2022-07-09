@@ -8,31 +8,31 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-q1 = "What meal is this for?"
+q1 = "Which meal are you having?"
 q1_options = ["Breakfast 🥐", "Lunch 🍗", "Dinner 🍱", "Dessert 🍨"]
 q1_dict = {
-    "Breakfast 🥐": "is_for_breakfast",
-    "Lunch 🍗": "is_for_lunch",
-    "Dinner 🍱": "is_for_dinner",
-    "Dessert 🍨": "is_for_dessert",
+    q1_options[0]: "is_for_breakfast",
+    q1_options[1]: "is_for_lunch",
+    q1_options[2]: "is_for_dinner",
+    q1_options[3]: "is_for_dessert",
 }
 
-q2 = "What is the price range?"
+q2 = "What is your price range?"
 q2_options = ["Low 💵", "Med 💰", "High 💸"]
 q2_col = "price_range"
 q2_dict = {
-    "Low 💵": 1,
-    "Med 💰": 2,
-    "High 💸": 3,
+    q2_options[0]: 1,
+    q2_options[1]: 2,
+    q2_options[2]: 3,
 }
 
-q3 = "What type of weather?"
-q3_options = ["Hot", "Cold", "Either"]
+q3 = "What's the weather right now?"
+q3_options = ["Hot 🔥", "Cold 🌦️", "Either 🍿"]
 q3_col = "ideal_weather"
 q3_dict = {
-    "Hot": "hot",
-    "Cold": "cold",
-    "Either": "any",
+    q3_options[0]: "hot",
+    q3_options[1]: "cold",
+    q3_options[2]: "any",
 }
 
 

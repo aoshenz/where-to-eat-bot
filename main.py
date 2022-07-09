@@ -47,7 +47,7 @@ async def help(update, context):
         You can control me by sending these commands:
 
         <b>Standard</b>
-        /start - does nothing
+        /start - say Hi 👋
         /help - help menu
 
         <b>Let's eat</b>
@@ -58,7 +58,7 @@ async def help(update, context):
 
 
 async def start(update, context):
-    await update.message.reply_html("Hello.")
+    await update.message.reply_html("Hello. 👋")
 
 
 async def eat(update, context):
