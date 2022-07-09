@@ -5,7 +5,7 @@ This bot helps you decide where to eat based on a couple of questions and a pred
 The where_2_eat bot is available here: [t.me/where_2_eat_bot](t.me/where_2_eat_bot). Here's an example of the simple functionality.
 
 <div align="center">
-<img src="images/demo.gif" alt="demo" width="300"/>
+<img src="images/demo.gif" alt="demo" width="500"/>
 </div>
 
 ## Motivation
