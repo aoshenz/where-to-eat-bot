@@ -60,11 +60,18 @@ class Food:
 
         remaining_rows = len(self.data)
 
-        random_row = random.randint(0, remaining_rows - 1)
-        logger.info("Chose row %s from %s.", random_row + 1, remaining_rows)
+        if remaining_rows > 0:
+            random_row = random.randint(0, remaining_rows - 1)
 
-        self.chosen_restaurant = self.data["restaurant"].iloc[random_row]
-        self.chosen_location = self.data["location"].iloc[random_row]
+            self.chosen_restaurant = self.data["restaurant"].iloc[random_row]
+            self.chosen_location = self.data["location"].iloc[random_row]
+
+            logger.info("Chose row %s from %s: %s, %s", random_row + 1, remaining_rows, self.chosen_restaurant, self.chosen_location)
+        else:
+
+            self.chosen_restaurant = "No restaurants with your choices"
+            self.chosen_location = "try again"
+
 
 
 def save_answer(list, answer):

@@ -173,7 +173,8 @@ async def end(update, context):
     # selected food
     ChosenFood.choose_food()
 
-    text = f"You chose {choices[0]}, {choices[1]} and {choices[2]}. You should eat at {ChosenFood.chosen_restaurant}, {ChosenFood.chosen_location}."
+    text = f"You chose {choices[0]}, {choices[1]} and {choices[2]}. \
+        You should eat at {ChosenFood.chosen_restaurant}, {ChosenFood.chosen_location}."
 
     await query.edit_message_text(text=text)
     return ConversationHandler.END
