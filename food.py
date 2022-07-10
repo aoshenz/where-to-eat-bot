@@ -73,7 +73,13 @@ class Food:
             self.chosen_restaurant = self.data["restaurant"].iloc[random_row]
             self.chosen_location = self.data["location"].iloc[random_row]
 
-            logger.info("Chose row %s from %s: %s, %s", random_row + 1, remaining_rows, self.chosen_restaurant, self.chosen_location)
+            logger.info(
+                "Chose row %s from %s: %s, %s",
+                random_row + 1,
+                remaining_rows,
+                self.chosen_restaurant,
+                self.chosen_location,
+            )
         elif remaining_rows == 0:
             self.chosen_restaurant = "No restaurants with your choices"
             self.chosen_location = "please try again"

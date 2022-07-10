@@ -36,6 +36,7 @@ ONE, TWO, THREE = range(3)
 # Instantiate class
 ChosenFood = food.Food()
 
+
 async def help(update, context):
     await update.message.reply_html(
         dedent(
@@ -173,12 +174,13 @@ async def end(update, context):
     # selected food
     ChosenFood.choose_food()
 
-    text = dedent(f"""
+    text = dedent(
+        f"""
         You chose {ChosenFood.choices[0]}, {ChosenFood.choices[1]} and {ChosenFood.choices[2]}. 
         
         You should eat at {ChosenFood.chosen_restaurant}, {ChosenFood.chosen_location}.
-    """)
-
+    """
+    )
 
     await query.edit_message_text(text=text)
     return ConversationHandler.END

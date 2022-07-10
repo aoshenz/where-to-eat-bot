@@ -4,9 +4,6 @@ This bot helps you decide where to eat based on a couple of questions and a pred
 
 The where_2_eat bot is available here: [t.me/where_2_eat_bot](https://t.me/where_2_eat_bot). Here's an example of the simple functionality.
 
-<div align="center">
-<img src="images/demo.gif" alt="demo" width="500"/>
-</div>
 
 ## Motivation
 Far too often, I am undecided on where to have a quick meal. Most of the time I end up going to the same takeaway store. I wanted to code up an app that decides for you based on a couple of questions. I took inspiration from a 'where should you travel' app (which I can't find the link to now). 

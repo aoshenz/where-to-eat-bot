@@ -1,20 +1,52 @@
 restaurant,location,ideal_weather,price_range,is_for_dessert,is_for_breakfast,is_for_lunch,is_for_dinner
-Lab Kitchen,Wentworth Point,hot,1,1,0,0,0
+Albee's Secret Recipe,Carlingford,any,2,0,0,1,1
+Lim's Hot Bread,Eastwood,any,1,0,1,1,0
+678 Sydney,Eastwood,any,3,0,0,1,1
+Eastwood Hotel,Eastwood,any,2,0,0,1,1
+Daejangkum,Eastwood,cold,3,0,0,1,1
+Mr Stonepot,Eastwood,any,3,0,0,1,1
+Mango Tree Thai,Eastwood,hot,1,1,0,0,0
+Master Hot Pot,Eastwood,cold,1,0,0,1,1
+Meet Fresh,Eastwood,hot,1,1,0,0,0
+Verace Pizzeria,Macquarie,any,3,0,0,1,1
+The Dining & Co,Macquarie,any,2,0,1,1,0
+Chicken Story,Meadowbank,any,2,0,0,1,1
+Italian Street Kitchen,Meadowbank,any,3,0,0,1,1
+Mister Gee,North Strathfield,any,2,0,0,0,1
+Myeongdong,North Strathfield,any,2,0,0,1,1
+McDonald's,Rhodes,any,1,1,1,1,1
+Two Peck Crispy Chicken,Rhodes,any,1,0,0,1,1
+Cho Express,Rhodes,any,1,0,0,1,1
+KFC,Rhodes,any,1,0,0,1,1
 Lab Bakery,Rhodes,hot,1,1,0,0,0
-CokCo Chicken,Wentworth Point,any,1,0,0,1,1
+machi machi,Rhodes,hot,1,1,0,0,0
+Tasty Towns Gelato,Rhodes,hot,1,1,0,0,0
 Bare Witness,Rhodes,any,2,0,1,1,0
 Left of Field,Rhodes,any,2,0,1,1,0
 Lilong by Taste of Shanghai,Rhodes,any,2,0,0,1,1
-McDonald's,Rhodes,any,1,1,0,1,1
-machi machi,Rhodes,hot,1,1,0,0,0
 Leaf Cafe & Co,Rhodes,any,2,0,1,1,0
-Two Peck Crispy Chicken,Rhodes,any,1,0,0,1,1
-Tasty Towns Gelato,Rhodes,hot,1,1,0,0,0
-Cho Express,Rhodes,any,1,0,0,1,1
 Auvers Cafe,Rhodes,any,2,0,1,1,0
-Italian Street Kitchen,Meadowbank,any,3,0,0,1,1
-Chicken Story,Meadowbank,any,2,0,0,1,1
-Spicy Joint Hot Pot,Rhodes,cold,3,0,0,0,1
 Phoenix Yum Cha,Rhodes,any,3,0,0,1,0
-KFC,Rhodes,any,1,0,0,1,1
+Spicy Joint Hot Pot,Rhodes,cold,3,0,0,0,1
+Seven Valleys Cafe,Ryde,any,2,0,1,1,0
+Leaf Cafe & Co,Ryde,any,2,0,1,1,0
+Cafe Crop,Strathfield,hot,1,1,0,0,0
+Lab Bakery Cafe,Strathfield,hot,1,1,0,0,0
+Jang Ta Bal,Strathfield,cold,3,0,0,1,1
+Biwon,Strathfield,cold,2,0,0,1,1
+Incredible Chicken,Strathfield,any,2,0,0,1,1
+Baker's House,Top Ryde,any,1,0,1,1,1
+Hurricane's Grill & Bar,Top Ryde,any,3,0,0,1,1
+CokCo Chicken,Wentworth Point,any,1,0,0,1,1
+Burger Point,Wentworth Point,any,1,0,0,1,1
+Lab Kitchen,Wentworth Point,hot,1,1,0,0,0
+Siroo,West Ryde,any,1,1,0,0,0
+Moeru,West Ryde,any,2,0,0,1,1
 Stoneage BBQ,West Ryde,cold,2,0,0,1,1
+Ice Kirin Bar,Burwood,hot,1,1,0,0,0
+1915 Lanzhou Beef Noodles,Burwood,any,2,0,0,1,1
+Milk Flower,Burwood,any,1,1,0,0,0
+Xi'an Eatery,Burwood,any,1,0,0,1,1
+Japan City,Top Ryde,any,2,0,0,1,1
+Nene Chicken,Macquarie,any,2,0,0,1,1
+Tan Viet Noodle House,Eastwood,any,1,0,0,1,1
